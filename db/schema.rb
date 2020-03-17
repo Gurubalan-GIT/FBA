@@ -10,40 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_122026) do
+ActiveRecord::Schema.define(version: 2020_03_17_184409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "aeroplanes", force: :cascade do |t|
-    t.string "type"
+    t.string "plane"
     t.integer "seats"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "business_classes", force: :cascade do |t|
-    t.integer "seats"
-    t.bigint "aeroplane_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["aeroplane_id"], name: "index_business_classes_on_aeroplane_id"
-  end
-
-  create_table "economy_classes", force: :cascade do |t|
-    t.integer "seats"
-    t.bigint "aeroplane_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["aeroplane_id"], name: "index_economy_classes_on_aeroplane_id"
-  end
-
-  create_table "first_classes", force: :cascade do |t|
-    t.integer "seats"
-    t.bigint "aeroplane_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["aeroplane_id"], name: "index_first_classes_on_aeroplane_id"
+    t.integer "fc_column"
+    t.integer "fc_row"
+    t.integer "bc_column"
+    t.integer "bc_row"
+    t.integer "ec_column"
+    t.integer "ec_row"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -51,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_122026) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_passengers_on_user_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -66,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_122026) do
     t.datetime "arrival"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "aeroplane_id", null: false
+    t.index ["aeroplane_id"], name: "index_trips_on_aeroplane_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,11 +62,11 @@ ActiveRecord::Schema.define(version: 2020_03_17_122026) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "business_classes", "aeroplanes"
-  add_foreign_key "economy_classes", "aeroplanes"
-  add_foreign_key "first_classes", "aeroplanes"
+  add_foreign_key "passengers", "users"
+  add_foreign_key "trips", "aeroplanes"
 end

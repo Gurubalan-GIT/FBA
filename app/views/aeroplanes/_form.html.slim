@@ -7,9 +7,27 @@
           li = message
 
   .field
-    = f.label :type
-    = f.text_field :type
+    = f.label :plane
+    = f.text_field :plane
   .field
     = f.label :seats
     = f.number_field :seats
+  .field
+    = f.label :fc_column
+    = f.number_field :fc_column
+  .field
+    = f.label :fc_row
+    = f.number_field :fc_row
+  .field
+    = f.label :bc_column
+    = f.number_field :bc_column
+  .field
+    = f.label :bc_row
+    = f.number_field :bc_row
+  .field
+    = f.label :ec_column
+    = f.number_field :ec_column
+  .field
+    = f.label :ec_row
+    = f.number_field :ec_row
   .actions = f.submit

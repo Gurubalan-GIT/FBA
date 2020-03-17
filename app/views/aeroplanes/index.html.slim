@@ -1,18 +1,18 @@
 h1 Listing aeroplanes
 
-table
-  thead
+table.table
+  thead.thead-dark
     tr
       th Type
       th Seats
-      th
+      th 
       th
       th
 
   tbody
     - @aeroplanes.each do |aeroplane|
       tr
-        td = aeroplane.type
+        td = aeroplane.plane
         td = aeroplane.seats
         td = link_to 'Show', aeroplane
         td = link_to 'Edit', edit_aeroplane_path(aeroplane)

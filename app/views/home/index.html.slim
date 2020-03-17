@@ -1,2 +1,13 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+br
+br
+br
+.jumbotron.text-center
+    h1.display-4 Flight Booking Application
+    p.lead An organised and efficient application to book flights within your fingertips.
+    hr.my-4/
+    p Check it out!
+    .row
+        p.lead.col-6
+            = link_to 'Sign up', new_user_registration_path, class: 'btn btn-success' 
+        p.lead.col-6
+            = link_to 'Log in', new_user_session_path, class: 'btn btn-warning'

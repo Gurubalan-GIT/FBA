@@ -1,10 +1,27 @@
+br
+br
+h3 Plane configuration
+br
+table.table
+  thead.thead-dark
+    tr
+      th Class
+      th No. of Columns
+      th No. of Rows
 
-p
-  strong Type:
-  = @aeroplane.type
-p
-  strong Seats:
-  = @aeroplane.seats
+  tbody
+      tr
+        td First Class
+        td = @aeroplane.fc_column
+        td = @aeroplane.fc_row
+      tr
+        td Business Class
+        td = @aeroplane.bc_column
+        td = @aeroplane.bc_row
+      tr
+        td Economy Class
+        td = @aeroplane.ec_column
+        td = @aeroplane.ec_row
 
 => link_to 'Edit', edit_aeroplane_path(@aeroplane)
 '|
