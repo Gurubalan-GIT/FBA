@@ -1,0 +1,23 @@
+h1 Listing passengers
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th
+      th
+      th
+
+  tbody
+    - @passengers.each do |passenger|
+      tr
+        td = passenger.name
+        td = passenger.email
+        td = link_to 'Show', passenger
+        td = link_to 'Edit', edit_passenger_path(passenger)
+        td = link_to 'Destroy', passenger, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Passenger', new_passenger_path

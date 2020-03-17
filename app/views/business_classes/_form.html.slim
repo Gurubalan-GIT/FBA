@@ -1,0 +1,15 @@
+= form_for @business_class do |f|
+  - if @business_class.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@business_class.errors.count, "error")} prohibited this business_class from being saved:"
+      ul
+        - @business_class.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :seats
+    = f.number_field :seats
+  .field
+    = f.label :aeroplane
+    = f.text_field :aeroplane
+  .actions = f.submit

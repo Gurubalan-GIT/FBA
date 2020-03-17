@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Pnr:
+  = @ticket.pnr
+
+=> link_to 'Edit', edit_ticket_path(@ticket)
+'|
+=< link_to 'Back', tickets_path

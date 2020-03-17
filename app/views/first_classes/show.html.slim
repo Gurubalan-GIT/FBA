@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Seats:
+  = @first_class.seats
+p
+  strong Aeroplane:
+  = @first_class.aeroplane
+
+=> link_to 'Edit', edit_first_class_path(@first_class)
+'|
+=< link_to 'Back', first_classes_path

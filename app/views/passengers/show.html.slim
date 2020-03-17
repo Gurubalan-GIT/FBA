@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @passenger.name
+p
+  strong Email:
+  = @passenger.email
+
+=> link_to 'Edit', edit_passenger_path(@passenger)
+'|
+=< link_to 'Back', passengers_path

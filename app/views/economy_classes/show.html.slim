@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Seats:
+  = @economy_class.seats
+p
+  strong Aeroplane:
+  = @economy_class.aeroplane
+
+=> link_to 'Edit', edit_economy_class_path(@economy_class)
+'|
+=< link_to 'Back', economy_classes_path

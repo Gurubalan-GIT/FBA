@@ -1,0 +1,23 @@
+h1 Listing economy_classes
+
+table
+  thead
+    tr
+      th Seats
+      th Aeroplane
+      th
+      th
+      th
+
+  tbody
+    - @economy_classes.each do |economy_class|
+      tr
+        td = economy_class.seats
+        td = economy_class.aeroplane
+        td = link_to 'Show', economy_class
+        td = link_to 'Edit', edit_economy_class_path(economy_class)
+        td = link_to 'Destroy', economy_class, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Economy class', new_economy_class_path

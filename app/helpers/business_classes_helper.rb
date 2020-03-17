@@ -1,0 +1,2 @@
+module BusinessClassesHelper
+end

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :tickets
+  resources :first_classes
+  resources :economy_classes
+  resources :business_classes
+  resources :passengers
   resources :trips
   resources :aeroplanes
   devise_for :users

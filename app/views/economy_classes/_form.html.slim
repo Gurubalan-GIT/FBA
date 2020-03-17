@@ -1,0 +1,15 @@
+= form_for @economy_class do |f|
+  - if @economy_class.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@economy_class.errors.count, "error")} prohibited this economy_class from being saved:"
+      ul
+        - @economy_class.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :seats
+    = f.number_field :seats
+  .field
+    = f.label :aeroplane
+    = f.text_field :aeroplane
+  .actions = f.submit
