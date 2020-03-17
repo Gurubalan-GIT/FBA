@@ -1,0 +1,27 @@
+h1 Listing trips
+
+table
+  thead
+    tr
+      th Origin
+      th Destination
+      th Departure
+      th Arrival
+      th
+      th
+      th
+
+  tbody
+    - @trips.each do |trip|
+      tr
+        td = trip.origin
+        td = trip.destination
+        td = trip.departure
+        td = trip.arrival
+        td = link_to 'Show', trip
+        td = link_to 'Edit', edit_trip_path(trip)
+        td = link_to 'Destroy', trip, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Trip', new_trip_path

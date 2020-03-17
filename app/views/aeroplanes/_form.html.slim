@@ -1,0 +1,15 @@
+= form_for @aeroplane do |f|
+  - if @aeroplane.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@aeroplane.errors.count, "error")} prohibited this aeroplane from being saved:"
+      ul
+        - @aeroplane.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :type
+    = f.text_field :type
+  .field
+    = f.label :seats
+    = f.number_field :seats
+  .actions = f.submit

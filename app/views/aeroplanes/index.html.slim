@@ -1,0 +1,23 @@
+h1 Listing aeroplanes
+
+table
+  thead
+    tr
+      th Type
+      th Seats
+      th
+      th
+      th
+
+  tbody
+    - @aeroplanes.each do |aeroplane|
+      tr
+        td = aeroplane.type
+        td = aeroplane.seats
+        td = link_to 'Show', aeroplane
+        td = link_to 'Edit', edit_aeroplane_path(aeroplane)
+        td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Aeroplane', new_aeroplane_path

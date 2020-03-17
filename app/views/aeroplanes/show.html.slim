@@ -1,0 +1,11 @@
+
+p
+  strong Type:
+  = @aeroplane.type
+p
+  strong Seats:
+  = @aeroplane.seats
+
+=> link_to 'Edit', edit_aeroplane_path(@aeroplane)
+'|
+=< link_to 'Back', aeroplanes_path
