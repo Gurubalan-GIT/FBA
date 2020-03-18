@@ -23,6 +23,20 @@ table.table
         td = @aeroplane.ec_column
         td = @aeroplane.ec_row
 
+h3 Trips 
+br
+table.table
+  thead.thead-dark
+    tr
+      th Origin
+      th Destination
+
+  tbody
+    - @aeroplane.trips.each do |trip|
+      tr
+        td = trip.origin
+        td = trip.destination
+
 => link_to 'Edit', edit_aeroplane_path(@aeroplane)
 '|
 =< link_to 'Back', aeroplanes_path

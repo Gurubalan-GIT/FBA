@@ -1,12 +1,13 @@
 h1 Listing trips
 
-table
-  thead
+table.table
+  thead.thead-dark
     tr
       th Origin
       th Destination
       th Departure
       th Arrival
+      th Plane
       th
       th
       th
@@ -18,6 +19,7 @@ table
         td = trip.destination
         td = trip.departure
         td = trip.arrival
+        td = trip.aeroplane.plane
         td = link_to 'Show', trip
         td = link_to 'Edit', edit_trip_path(trip)
         td = link_to 'Destroy', trip, data: { confirm: 'Are you sure?' }, method: :delete
