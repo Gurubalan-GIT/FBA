@@ -40,6 +40,10 @@
             <% if current_user && current_user.admin? %>
 
                <li class="nav-item">
+                <%= link_to 'Aeroplanes', aeroplanes_path , class: 'nav-link' %> 
+              </li>
+
+               <li class="nav-item">
                 <%= link_to 'Trips', trips_path , class: 'nav-link' %> 
               </li>
 

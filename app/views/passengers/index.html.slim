@@ -5,7 +5,7 @@ table
     tr
       th Name
       th Email
-      th
+      th Age
       th
       th
 
@@ -14,6 +14,7 @@ table
       tr
         td = passenger.name
         td = passenger.email
+        td = passenger.age
         td = link_to 'Show', passenger
         td = link_to 'Edit', edit_passenger_path(passenger)
         td = link_to 'Destroy', passenger, data: { confirm: 'Are you sure?' }, method: :delete

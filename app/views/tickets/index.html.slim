@@ -4,6 +4,8 @@ table
   thead
     tr
       th Pnr
+      th Class
+      th Seat No
       th
       th
       th
@@ -12,6 +14,8 @@ table
     - @tickets.each do |ticket|
       tr
         td = ticket.pnr
+        td = ticket.seat_class
+        td = ticket.seat_no
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)
         td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete

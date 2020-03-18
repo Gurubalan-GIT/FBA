@@ -8,35 +8,43 @@ table.table
       th Class
       th No. of Columns
       th No. of Rows
+      th Fare
 
   tbody
       tr
         td First Class
         td = @aeroplane.fc_column
         td = @aeroplane.fc_row
+        td = @aeroplane.fc_fare
       tr
         td Business Class
         td = @aeroplane.bc_column
         td = @aeroplane.bc_row
+        td = @aeroplane.bc_fare
       tr
         td Economy Class
         td = @aeroplane.ec_column
         td = @aeroplane.ec_row
+        td = @aeroplane.ec_fare
 
-h3 Trips 
+h3 Trips Scheduled
 br
 table.table
   thead.thead-dark
     tr
       th Origin
       th Destination
+      th Departure time 
+      th Arrival time
 
   tbody
     - @aeroplane.trips.each do |trip|
       tr
         td = trip.origin
         td = trip.destination
+        td = trip.departure
+        td = trip.arrival 
 
-=> link_to 'Edit', edit_aeroplane_path(@aeroplane)
-'|
-=< link_to 'Back', aeroplanes_path
+=> link_to 'Edit', edit_aeroplane_path(@aeroplane), class:'btn btn-warning'
+' &nbsp
+=< link_to 'Back', aeroplanes_path, class:'btn btn-danger'

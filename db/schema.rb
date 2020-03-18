@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_184409) do
+ActiveRecord::Schema.define(version: 2020_03_18_142511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2020_03_17_184409) do
     t.integer "bc_row"
     t.integer "ec_column"
     t.integer "ec_row"
+    t.integer "fc_fare"
+    t.integer "bc_fare"
+    t.integer "ec_fare"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -34,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_184409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "age"
     t.index ["user_id"], name: "index_passengers_on_user_id"
   end
 
@@ -41,6 +45,12 @@ ActiveRecord::Schema.define(version: 2020_03_17_184409) do
     t.string "pnr"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "seat_class"
+    t.string "seat_no"
+    t.bigint "trip_id", null: false
+    t.bigint "passenger_id", null: false
+    t.index ["passenger_id"], name: "index_tickets_on_passenger_id"
+    t.index ["trip_id"], name: "index_tickets_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -68,5 +78,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_184409) do
   end
 
   add_foreign_key "passengers", "users"
+  add_foreign_key "tickets", "passengers"
+  add_foreign_key "tickets", "trips"
   add_foreign_key "trips", "aeroplanes"
 end

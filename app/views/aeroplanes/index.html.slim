@@ -1,5 +1,7 @@
-h1 Listing aeroplanes
-
+br
+br
+h3 Listing aeroplanes
+br
 table.table
   thead.thead-dark
     tr
@@ -14,10 +16,10 @@ table.table
       tr
         td = aeroplane.plane
         td = aeroplane.seats
-        td = link_to 'Show', aeroplane
-        td = link_to 'Edit', edit_aeroplane_path(aeroplane)
-        td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show configuration', aeroplane, class:'btn btn-sm btn-info'
+        td = link_to 'Edit', edit_aeroplane_path(aeroplane), class:'btn btn-sm btn-warning'
+        td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete, class:'btn btn-sm btn-danger'
 
 br
 
-= link_to 'New Aeroplane', new_aeroplane_path
+= link_to 'New Aeroplane', new_aeroplane_path, class:'btn btn-primary'

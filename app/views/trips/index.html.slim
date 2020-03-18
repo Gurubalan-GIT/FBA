@@ -1,5 +1,7 @@
-h1 Listing trips
-
+br
+br
+h3 Scheduled Trips
+br
 table.table
   thead.thead-dark
     tr
@@ -20,10 +22,10 @@ table.table
         td = trip.departure
         td = trip.arrival
         td = trip.aeroplane.plane
-        td = link_to 'Show', trip
-        td = link_to 'Edit', edit_trip_path(trip)
-        td = link_to 'Destroy', trip, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', trip, class:'btn btn-sm btn-info'
+        td = link_to 'Edit', edit_trip_path(trip), class:'btn btn-sm btn-warning'
+        td = link_to 'Destroy', trip, data: { confirm: 'Are you sure?' }, method: :delete, class:'btn btn-sm btn-danger'
 
 br
 
-= link_to 'New Trip', new_trip_path
+= link_to 'New Trip', new_trip_path, class:'btn btn-primary'

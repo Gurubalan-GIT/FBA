@@ -12,4 +12,9 @@
   .field
     = f.label :email
     = f.text_field :email
+  .field
+    = f.label :age
+    = f.text_field :age
+  .field
+    = f.hidden_field :user_id, value: current_user.id
   .actions = f.submit
