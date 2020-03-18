@@ -7,6 +7,12 @@ class TripsController < ApplicationController
     @trips = Trip.all
   end
 
+  def search 
+    @origin = params[:origin]
+    @destination = params[:destination]
+    @searched_trips = Trip.where(" origin LIKE ? AND destination LIKE ?", @origin, @destination)
+  end
+
   # GET /trips/1
   # GET /trips/1.json
   def show

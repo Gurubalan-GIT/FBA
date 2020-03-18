@@ -11,8 +11,22 @@
     = f.text_field :pnr
   .field
     = f.label :seat_class
-    = f.text_field :seat_class
+    = f.select :seat_class, [ 'First', 'Business', 'Economy' ], :prompt => 'Select One' 
+    
+  == render 'seatconfig'
+
   .field
     = f.label :seat_no
     = f.text_field :seat_no
+  .field  
+    p
+      | Passenger Name:
+    = f.fields_for :passenger_attributes, @ticket.build_passenger do |passenger_fields|
+      = passenger_fields.text_field :name, required: true, class: 'form-control'  
+      = passenger_fields.text_field :email, required: true, class: 'form-control' 
+      = passenger_fields.text_field :age, required: true, class: 'form-control' 
+      = passenger_fields.hidden_field :user_id, value: current_user.id
+  br
+  .field
+    = hidden_field_tag :trip_id, params[:trip_id] 
   .actions = f.submit
