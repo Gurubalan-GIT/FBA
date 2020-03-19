@@ -9,12 +9,12 @@
     box-sizing: border-box;
   }
   html {
-    font-size: 16px;
+    font-size: 12px;
   }
   
   .plane {
     margin: 20px auto;
-    max-width: 300px;
+    max-width: 400px;
   }
   
   .cockpit {
@@ -100,6 +100,22 @@
       position: absolute;
       opacity: 0;
     }
+
+    input[type=radio]{
+      position: absolute;
+      opacity: 0;
+    }
+
+    input[type=radio]:checked {
+        + label {
+          background: #bada55;      
+          -webkit-animation-name: rubberBand;
+              animation-name: rubberBand;
+          animation-duration: 300ms;
+          animation-fill-mode: both;
+        }
+      }
+
     input[type=checkbox]:checked {
       + label {
         background: #bada55;      
@@ -109,10 +125,11 @@
         animation-fill-mode: both;
       }
     }
-    input[type=checkbox]:disabled {
+    
+    input[type=radio]:disabled {
       + label {
-        background: #dddddd;
-        text-indent: -9999px;
+        background: #afaaaa;
+        text-indent: 0px;
         overflow: hidden;
         &:after {
           content: "X";
