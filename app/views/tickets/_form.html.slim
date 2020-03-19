@@ -6,18 +6,12 @@
         - @ticket.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :pnr
-    = f.text_field :pnr
-  .field
-    = f.label :seat_class
-    = f.select :seat_class, [ 'First', 'Business', 'Economy' ], :prompt => 'Select One' 
+  / .field
+  /   = f.label :seat_class
+  /   = f.select :seat_class, [ 'First', 'Business', 'Economy' ], :prompt => 'Select One' 
     
-  == render 'seatconfig'
+  == render 'seatconfig' , f: f
 
-  .field
-    = f.label :seat_no
-    = f.text_field :seat_no
   .field  
     p
       | Passenger Name:

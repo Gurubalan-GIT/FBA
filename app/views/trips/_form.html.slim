@@ -21,6 +21,9 @@
   .field
       = f.label :room
       = f.collection_select :aeroplane_id, Aeroplane.all, :id, :plane, {:include_blank => false}, {:class => 'form-control'}
+  .field
+    = f.label :cost
+    = f.text_field :cost
 
   .actions = f.submit
       

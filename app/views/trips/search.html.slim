@@ -2,9 +2,9 @@ br
 h3 Search Trips
 = form_tag search_path do |f|
   .field
-    = select_tag "origin", options_from_collection_for_select(Trip.all, "origin", "origin"), include_blank: "Origin"
+    = select_tag "origin", options_from_collection_for_select(Trip.distinct.select(:origin), "origin", "origin"), include_blank: "Origin"
     ' &nbsp
-    = select_tag "destination", options_from_collection_for_select(Trip.all, "destination", "destination"), include_blank: "Destination"
+    = select_tag "destination", options_from_collection_for_select(Trip.distinct.select(:destination), "destination", "destination"), include_blank: "Destination"
     ' &nbsp
     = submit_tag "Search Trips"
 
@@ -30,4 +30,4 @@ table.table
         td = trip.arrival
         td = trip.aeroplane.plane
         td = link_to 'Show', trip, class:'btn btn-sm btn-info'
-        td = link_to 'Book Tickets', {:controller => "tickets", :action => "new", :trip_id => trip.id }
+        td = link_to 'Book Tickets', {:controller => "tickets", :action => "new", :trip_id => trip.id} , class: 'btn btn-sm btn-success'
