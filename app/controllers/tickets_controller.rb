@@ -14,7 +14,11 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    if params[:trip_id]
+      @ticket = Ticket.new
+    else
+      redirect_to search_path, notice: 'Choose Trip'
+    end
   end
 
   # GET /tickets/1/edit
