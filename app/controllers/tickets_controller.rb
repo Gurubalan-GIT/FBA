@@ -34,6 +34,17 @@ class TicketsController < ApplicationController
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
+        ActionMailer::Base.smtp_settings = {
+          :address              => "smtp.gmail.com",
+          :port                 => 587,
+          :user_name            => 'gurubalan@commutatus.com',
+          :password             => 'gtgvmzkmnpkxzdgd',
+          :authentication       => "plain",
+          :enable_starttls_auto => true
+        }
+
+        TicketMailer.with(ticket: @ticket, passenger: @ticket.passenger).new_ticket_email.deliver_now!
+
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
