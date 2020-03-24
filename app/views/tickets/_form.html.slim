@@ -5,17 +5,13 @@
       ul
         - @ticket.errors.full_messages.each do |message|
           li = message
-
-  / .field
-  /   = f.label :seat_class
-  /   = f.select :seat_class, [ 'First', 'Business', 'Economy' ], :prompt => 'Select One' 
     
   == render 'seatconfig' , f: f
 
   .field  
     p
       | Passenger Name:
-    = f.fields_for :passenger_attributes, @ticket.build_passenger do |passenger_fields|
+    = f.fields_for :passenger_attributes do |passenger_fields|
       = passenger_fields.text_field :name, required: true, class: 'form-control'  
       = passenger_fields.text_field :email, required: true, class: 'form-control' 
       = passenger_fields.text_field :age, required: true, class: 'form-control' 

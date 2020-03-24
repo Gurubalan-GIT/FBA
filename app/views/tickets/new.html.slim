@@ -1,4 +1,21 @@
-h1 New ticket
+br
+br
+h4 Book a ticket -
+br
+br
+.row
+    h3 Fares:
+.row
+    h3 First Class:
+    h3 = @trip.fcfare 
+' &nbsp
+.row
+    h3 Business Class: 
+    h3 = @trip.bcfare 
+' &nbsp
+.row
+    h3 Economy Class: 
+    h3 = @trip.ecfare 
 
 == render 'form'
 

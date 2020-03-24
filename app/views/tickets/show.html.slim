@@ -3,6 +3,9 @@ p#notice = notice
 p
   strong Pnr:
   = @ticket.pnr
+p
+  strong Price: 
+  = @ticket.price
 
 => link_to 'Edit', edit_ticket_path(@ticket)
 '|

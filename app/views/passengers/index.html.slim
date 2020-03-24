@@ -11,13 +11,15 @@ table
 
   tbody
     - @passengers.each do |passenger|
-      tr
-        td = passenger.name
-        td = passenger.email
-        td = passenger.age
-        td = link_to 'Show', passenger
-        td = link_to 'Edit', edit_passenger_path(passenger)
-        td = link_to 'Destroy', passenger, data: { confirm: 'Are you sure?' }, method: :delete
+      - if passenger.tickets.empty?
+      - else
+        tr
+          td = passenger.name
+          td = passenger.email
+          td = passenger.age
+          td = link_to 'Show', passenger
+          td = link_to 'Edit', edit_passenger_path(passenger)
+          td = link_to 'Destroy', passenger, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
