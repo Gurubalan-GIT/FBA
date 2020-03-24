@@ -15,7 +15,10 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     if params[:trip_id]
+      trip_id = params[:trip_id].to_i
+      @trip = Trip.find(trip_id)
       @ticket = Ticket.new
+      @ticket.build_passenger
     else
       redirect_to search_path, notice: 'Choose Trip'
     end
@@ -84,6 +87,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:pnr, :seat_class, :seat_no, :trip_id, passenger_attributes: [:name, :email, :age, :user_id])
+      params.require(:ticket).permit(:id, :pnr, :seat_class, :seat_no, :trip_id, :price, passenger_attributes: [:id, :name, :email, :age, :user_id])
     end
 end
