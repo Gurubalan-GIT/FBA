@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_074600) do
+ActiveRecord::Schema.define(version: 2020_03_24_103930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_074600) do
     t.integer "bc_row"
     t.integer "ec_column"
     t.integer "ec_row"
-    t.integer "fc_fare"
-    t.integer "bc_fare"
-    t.integer "ec_fare"
     t.integer "model"
   end
 
@@ -50,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_074600) do
     t.string "seat_no"
     t.bigint "trip_id", null: false
     t.bigint "passenger_id", null: false
+    t.integer "price"
     t.index ["passenger_id"], name: "index_tickets_on_passenger_id"
     t.index ["trip_id"], name: "index_tickets_on_trip_id"
   end
@@ -63,6 +61,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_074600) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "aeroplane_id", null: false
     t.integer "cost"
+    t.integer "fcfare"
+    t.integer "bcfare"
+    t.integer "ecfare"
     t.index ["aeroplane_id"], name: "index_trips_on_aeroplane_id"
   end
 
