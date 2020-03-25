@@ -32,7 +32,7 @@ class PassengersController < ApplicationController
 
     respond_to do |format|
       if @passenger.save
-        format.html { redirect_to @passenger, notice: 'Passenger was successfully created.' }
+        format.html { redirect_to passengers_path, notice: 'Passenger was successfully created.' }
         format.json { render :show, status: :created, location: @passenger }
       else
         format.html { render :new }

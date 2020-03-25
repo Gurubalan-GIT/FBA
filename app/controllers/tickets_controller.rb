@@ -35,7 +35,7 @@ class TicketsController < ApplicationController
     @ticket.trip_id = params[:trip_id]
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to tickets_path, notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
         ActionMailer::Base.smtp_settings = {
           :address              => "smtp.gmail.com",
