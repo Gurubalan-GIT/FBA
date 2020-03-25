@@ -7,20 +7,25 @@ table.table
     tr
       th Origin
       th Destination
-      th Date
       th Departure
       th Arrival
       th Plane
+      th
+      th
+      th
 
   tbody
     - @trips.each do |trip|
       tr
         td = trip.origin
         td = trip.destination
-        td = readable_date(trip.departure)
-        td = readable_time(trip.departure)
-        td = readable_time(trip.arrival)
+        td = trip.departure
+        td = trip.arrival
         td = trip.aeroplane.plane
+        td = link_to 'Show', trip, class:'btn btn-sm btn-info'
+        td = link_to 'Edit', edit_trip_path(trip), class:'btn btn-sm btn-warning'
+        td = link_to 'Destroy', trip, data: { confirm: 'Are you sure?' }, method: :delete, class:'btn btn-sm btn-danger'
+
 br
 
 = link_to 'New Trip', new_trip_path, class:'btn btn-primary'

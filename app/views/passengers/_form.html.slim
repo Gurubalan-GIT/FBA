@@ -1,20 +1,22 @@
 = form_for @passenger do |f|
   - if @passenger.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@passenger.errors.count, "error")} prohibited this passenger from being saved:"
-      ul
         - @passenger.errors.full_messages.each do |message|
-          li = message
+          .alert.alert-warning
+            = message
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
+  br
   .field
     = f.label :email
-    = f.text_field :email
+    = f.text_field :email, class: 'form-control'
+  br
   .field
     = f.label :age
-    = f.text_field :age
+    = f.text_field :age, class: 'form-control'
+  br
   .field
     = f.hidden_field :user_id, value: current_user.id
-  .actions = f.submit
+  .actions = f.submit class: 'btn btn-primary'

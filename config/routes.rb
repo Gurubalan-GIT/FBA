@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :tickets
-  resources :passengers
   get '/trips/search' => 'trips#search', as: 'search'
   post '/trips/search' => 'trips#search'
+  get '/alltrips' => 'trips#alltrips', as: 'alltrips'
+  get '/allpassengers' => 'passengers#allpassengers', as: 'allpassengers'
+  resources :tickets
+  resources :passengers
   resources :trips
   resources :aeroplanes
   devise_for :users

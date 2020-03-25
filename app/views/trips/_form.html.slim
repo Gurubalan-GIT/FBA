@@ -1,38 +1,60 @@
 = form_for @trip do |f|
   - if @trip.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@trip.errors.count, "error")} prohibited this trip from being saved:"
-      ul
         - @trip.errors.full_messages.each do |message|
-          li = message
+          .alert.alert-danger
+            = message
 
   .field
-    = f.label :origin
-    = f.text_field :origin
+    .col-4
+    .col-4
+      = f.label :origin
+      = f.text_field :origin, class: 'form-control' 
+  br
   .field
-    = f.label :destination
-    = f.text_field :destination
+    .col-4
+    .col-4
+      = f.label :destination
+      = f.text_field :destination, class: 'form-control' 
+  br
   .field
-    = f.label :departure
-    = f.datetime_select :departure
+    .col-4
+    .col-4
+      = f.label :departure
+      br
+      = f.datetime_select :departure, class: 'form-control' 
+  br
   .field
-    = f.label :arrival
-    = f.datetime_select :arrival
+    .col-4
+    .col-4
+      = f.label :arrival
+      br
+      = f.time_select :arrival, class: 'form-control' 
+  br
   .field
-      = f.label :room
+    .col-4
+    .col-4
+      = f.label :aeroplane_id, "Aeroplane Model"
       = f.collection_select :aeroplane_id, Aeroplane.all, :id, :plane, {:include_blank => false}, {:class => 'form-control'}
+  br
   .field
-    = f.label :cost
-    = f.text_field :cost
+    .col-4
+    .col-4
+      = f.label :fcfare, "First class Fare"
+      = f.number_field :fcfare, class: 'form-control' 
+  br
   .field
-    = f.label :fcfare
-    = f.text_field :fcfare
+    .col-4
+    .col-4
+      = f.label :bcfare, "Business Class Fare"
+      = f.number_field :bcfare, class: 'form-control' 
+  br
   .field
-    = f.label :bcfare
-    = f.text_field :bcfare
-  .field
-    = f.label :ecfare
-    = f.text_field :ecfare
+    .col-4
+    .col-4
+      = f.label :ecfare, "Economy Class Fare"
+      = f.number_field :ecfare, class: 'form-control' 
+  br
+  .actions = f.submit class: 'btn btn-primary'
 
-  .actions = f.submit
       

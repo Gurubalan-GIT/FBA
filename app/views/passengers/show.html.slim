@@ -1,12 +1,53 @@
-p#notice = notice
+br
+br
+h3 Trips Scheduled
+br
+table.table
+  thead.thead-dark
+    tr
+      th Origin
+      th Destination
+      th Departure Date
+      th Departure time 
+      th Arrival time
+      th First class Fare
+      th Business class Fare      
+      th Economy class Fare
 
-p
-  strong Name:
-  = @passenger.name
-p
-  strong Email:
-  = @passenger.email
 
-=> link_to 'Edit', edit_passenger_path(@passenger)
-'|
-=< link_to 'Back', passengers_path
+  tbody
+    - @passenger.trips.each do |trip|
+      tr
+        td = trip.origin
+        td = trip.destination
+        td = readable_date(trip.departure)
+        td = readable_time(trip.departure)
+        td = readable_time(trip.arrival)
+        td = trip.fcfare
+        td = trip.bcfare
+        td = trip.ecfare
+br
+br
+br
+br
+h4 Tickets Booked
+br
+table.table
+  thead.thead-dark
+    tr
+      th PNR
+      th Class
+      th Seat No
+      th Price 
+
+  tbody
+    - @passenger.tickets.each do |ticket|
+      tr
+        td = ticket.pnr
+        td = ticket.seat_class
+        td = ticket.seat_no
+        td = ticket.price
+
+=> link_to 'Edit', edit_passenger_path(@passenger), class: 'btn btn-warning'
+' &nbsp
+=< link_to 'Back', passengers_path, class: 'btn btn-danger'
