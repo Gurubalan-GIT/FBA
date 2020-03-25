@@ -4,7 +4,11 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    if(current_user && current_user.admin?)
+      @tickets = Ticket.all
+    else
+      redirect_to passengers_path, alert: 'You do not have access. Please view tickets from passengers.'
+    end
   end
 
   # GET /tickets/1

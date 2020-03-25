@@ -15,7 +15,11 @@ class TripsController < ApplicationController
   end
 
   def alltrips
-    @trips = Trip.all
+    if(current_user && current_user.admin?)
+      @trips = Trip.all    
+    else
+      redirect_to trips_path, alert: 'You do not have access.'
+    end
   end
 
   # GET /trips/1

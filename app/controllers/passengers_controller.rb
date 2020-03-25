@@ -8,7 +8,11 @@ class PassengersController < ApplicationController
   end
 
   def allpassengers
-    @passengers = Passenger.all
+    if(current_user && current_user.admin?)
+      @passengers = Passenger.all
+    else
+      redirect_to passengers_path, alert: 'You do not have access.'
+    end
   end
 
   # GET /passengers/1

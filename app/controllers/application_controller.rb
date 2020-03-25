@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       if(current_user.admin == true )
         aeroplanes_path
       else
-        trips_path
+        search_path
       end
     end
 
