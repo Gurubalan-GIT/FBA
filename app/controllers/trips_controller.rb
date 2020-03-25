@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  helper :application
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   # GET /trips
@@ -11,6 +12,10 @@ class TripsController < ApplicationController
     @origin = params[:origin]
     @destination = params[:destination]
     @searched_trips = Trip.where(" origin LIKE ? AND destination LIKE ?", @origin, @destination)
+  end
+
+  def alltrips
+    @trips = Trip.all
   end
 
   # GET /trips/1
@@ -34,7 +39,7 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to trips_path, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }
