@@ -11,6 +11,7 @@ table.table
       th Departure
       th Arrival
       th Plane
+      th
 
   tbody
     - @trips.each do |trip|
@@ -21,5 +22,6 @@ table.table
         td = readable_time(trip.departure)
         td = readable_time(trip.arrival)
         td = trip.aeroplane.plane
+        td = link_to 'View Aeroplane', trip, class: 'btn btn-sm btn-info'
 br
 

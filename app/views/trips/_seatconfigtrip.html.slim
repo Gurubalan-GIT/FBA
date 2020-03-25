@@ -1,0 +1,52 @@
+- aeroplane = Trip.find(trip_id).aeroplane 
+- fc_col = aeroplane.fc_column
+- fc_row = aeroplane.fc_row
+- bc_col = aeroplane.bc_column
+- bc_row = aeroplane.bc_row
+- ec_col = aeroplane.ec_column
+- ec_row = aeroplane.ec_row
+- seat_row = 0
+
+.plane
+  .cockpit
+    h1.text-50 
+        = aeroplane.plane 
+        ' &nbsp
+        = aeroplane.model
+  .exit.exit--front.fuselage
+  ol.cabin.fuselage
+    h4.text-center First Class
+    - for i in 1..fc_row
+        li.row.row--1
+            - seat_letter = "@"
+            - seat_row = seat_row + 1           
+            ol.seats type="A" 
+                - for i in 1..fc_col
+                    - seat_letter = seat_letter.next
+                    li.seat
+                            = label_tag :seat_no, "#{seat_row}"+"#{seat_letter}" , :value => "#{seat_row}"+"#{seat_letter}"+" First" 
+                        
+
+    h4.text-center Business Class
+    - for i in 1..bc_row
+        li.row.row--2
+            - seat_letter = "@"
+            - seat_row = seat_row + 1           
+            ol.seats type="B" 
+                - for i in 1..bc_col
+                    - seat_letter = seat_letter.next
+                    li.seat
+                            = label_tag :seat_no, "#{seat_row}"+"#{seat_letter}" , :value => "#{seat_row}"+"#{seat_letter}"+" Business"
+
+    h4.text-center Economy Class
+    - for i in 1..ec_row
+        li.row.row--3
+            - seat_letter = "@"
+            - seat_row = seat_row + 1           
+            ol.seats type="C" 
+                - for i in 1..ec_col
+                    - seat_letter = seat_letter.next
+                    li.seat
+                            = label_tag :seat_no, "#{seat_row}"+"#{seat_letter}" , :value => "#{seat_row}"+"#{seat_letter}"+" Economy" 
+   
+  .exit.exit--back.fuselage

@@ -1,12 +1,16 @@
 br
 h3 Search Trips
+br
 = form_tag search_path do |f|
   .field
-    = select_tag "origin", options_from_collection_for_select(Trip.distinct.select(:origin), "origin", "origin"), include_blank: "Origin"
-    ' &nbsp
-    = select_tag "destination", options_from_collection_for_select(Trip.distinct.select(:destination), "destination", "destination"), include_blank: "Destination"
-    ' &nbsp
-    = submit_tag "Search Trips"
+    .row
+      .col-3
+        = select_tag "origin", options_from_collection_for_select(Trip.distinct.select(:origin), "origin", "origin"), include_blank: "Origin", class: 'form-control'
+      ' &nbsp
+      .col-3
+        = select_tag "destination", options_from_collection_for_select(Trip.distinct.select(:destination), "destination", "destination"), include_blank: "Destination", class: 'form-control'
+      ' &nbsp
+      = submit_tag "Search Trips" , class: 'btn btn-success'
 
 
 br
@@ -18,6 +22,9 @@ table.table
       th Departure
       th Arrival
       th Plane
+      th First Class Fare
+      th Business Class Fare
+      th Economy Class Fare
       th
       th 
 
@@ -29,5 +36,8 @@ table.table
         td = trip.departure
         td = trip.arrival
         td = trip.aeroplane.plane
+        td = trip.fcfare
+        td = trip.bcfare
+        td = trip.ecfare
         td = link_to 'Show', trip, class:'btn btn-sm btn-info'
         td = link_to 'Book Tickets', {:controller => "tickets", :action => "new", :trip_id => trip.id} , class: 'btn btn-sm btn-success'

@@ -1,26 +1,28 @@
-h1 Editing ticket
+h4 Update ticket!
 
 = form_for @ticket do |f|
   - if @ticket.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@ticket.errors.count, "error")} prohibited this ticket from being saved:"
-      ul
         - @ticket.errors.full_messages.each do |message|
-          li = message
+          .alert.alert-danger 
+            = message
 
-  / .field
-  /   = f.label :seat_class
-  /   = f.select :seat_class, [ 'First', 'Business', 'Economy' ], :prompt => 'Select One' 
+  .field
+    .col-4
+    .col-4
+      = f.label :passenger_id, "Passenger"
+      = f.collection_select :passenger_id, current_user.passengers, :id, :name, {:include_blank => false}, {:class => 'form-control'}
+
   == render 'seatconfig_edit' , f: f, ticket: @ticket
 
-  .field  
-    p
-      | Passenger Name:
-    = f.fields_for :passenger_attributes do |passenger_fields|
-      = passenger_fields.text_field :name, required: true, class: 'form-control'  
-      = passenger_fields.text_field :email, required: true, class: 'form-control' 
-      = passenger_fields.text_field :age, required: true, class: 'form-control' 
-      = passenger_fields.hidden_field :user_id, value: current_user.id
+  / .field  
+  /   p
+  /     | Passenger Name:
+  /   = f.fields_for :passenger_attributes do |passenger_fields|
+  /     = passenger_fields.text_field :name, required: true, class: 'form-control'  
+  /     = passenger_fields.text_field :email, required: true, class: 'form-control' 
+  /     = passenger_fields.text_field :age, required: true, class: 'form-control' 
+  /     = passenger_fields.hidden_field :user_id, value: current_user.id
   br
   .field
     = f.hidden_field :trip_id, value: @ticket.trip_id
