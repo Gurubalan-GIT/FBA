@@ -1,4 +1,5 @@
 class AeroplanesController < ApplicationController
+  helper :application
   before_action :set_aeroplane, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action do 
