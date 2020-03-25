@@ -2,20 +2,26 @@
   - if @passenger.errors.any?
     #error_explanation
         - @passenger.errors.full_messages.each do |message|
-          .alert.alert-warning
+          .alert.alert-danger
             = message
 
   .field
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+    .col-4
+    .col-4
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
   br
   .field
-    = f.label :email
-    = f.text_field :email, class: 'form-control'
+    .col-4
+    .col-4
+      = f.label :email
+      = f.text_field :email, class: 'form-control'
   br
   .field
-    = f.label :age
-    = f.text_field :age, class: 'form-control'
+    .col-4
+    .col-4
+      = f.label :age
+      = f.text_field :age, class: 'form-control'
   br
   .field
     = f.hidden_field :user_id, value: current_user.id

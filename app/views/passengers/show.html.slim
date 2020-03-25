@@ -39,6 +39,7 @@ table.table
       th Class
       th Seat No
       th Price 
+      th
 
   tbody
     - @passenger.tickets.each do |ticket|
@@ -47,6 +48,7 @@ table.table
         td = ticket.seat_class
         td = ticket.seat_no
         td = ticket.price
+        td = link_to 'Cancel Ticket', ticket, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-sm btn-danger'
 
 => link_to 'Edit', edit_passenger_path(@passenger), class: 'btn btn-warning'
 ' &nbsp

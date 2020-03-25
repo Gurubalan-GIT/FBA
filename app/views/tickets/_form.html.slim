@@ -4,14 +4,15 @@
         - @ticket.errors.full_messages.each do |message|
           .alert.alert-danger
             = message
-    
-  == render 'seatconfig' , f: f
-
+  
   .field
     .col-4
     .col-4
       = f.label :passenger_id, "Passenger"
       = f.collection_select :passenger_id, current_user.passengers, :id, :name, {:include_blank => false}, {:class => 'form-control'}
+
+  br
+  = link_to 'Create a new passenger?', new_passenger_path, class: 'btn btn-info'
   br
   / .field  
   /   p
@@ -20,8 +21,13 @@
   /     = passenger_fields.text_field :name, required: true, class: 'form-control'  
   /     = passenger_fields.text_field :email, required: true, class: 'form-control' 
   /     = passenger_fields.text_field :age, required: true, class: 'form-control' 
-  /     = passenger_fields.hidden_field :user_id, value: current_user.id
+  /    
+  br
+  == render 'seatconfig' , f: f
+
+   = passenger_fields.hidden_field :user_id, value: current_user.id
   br
   .field
     = hidden_field_tag :trip_id, params[:trip_id] 
-  .actions = f.submit
+  br
+  .actions = f.submit class: 'btn btn-success'

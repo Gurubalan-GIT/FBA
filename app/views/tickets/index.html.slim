@@ -1,12 +1,14 @@
-h1 Listing tickets
-
-table
-  thead
+br
+br
+h3 Booked tickets
+br
+table.table
+  thead.thead-dark
     tr
       th Pnr
       th Class
       th Seat No
-      th
+      th Passenger Name
       th
       th
 
@@ -16,10 +18,10 @@ table
         td = ticket.pnr
         td = ticket.seat_class
         td = ticket.seat_no
-        td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_ticket_path(ticket)
-        td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
+        td = ticket.passenger.name
+        td = link_to 'Edit', edit_ticket_path(ticket), class: 'btn btn-sm btn-warning'
+        td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-sm btn-danger'
 
 br
 
-= link_to 'New Ticket', new_ticket_path
+= link_to 'New Ticket', new_ticket_path, class: 'btn btn-sm btn-primary'
