@@ -2,12 +2,13 @@ br
 br
 h3 All Aeroplanes 
 br
-table.table
+table.table.table
   thead.thead-dark
     tr
       th Type
       th Seats
-      th 
+      th Model
+      th
       th
       th
 
@@ -16,7 +17,8 @@ table.table
       tr
         td = aeroplane.plane
         td = aeroplane.seats
-        td = link_to 'Show configuration', aeroplane, class:'btn btn-sm btn-info'
+        td = aeroplane.model
+        td = link_to 'Show Plane Configuration', aeroplane, class:'btn btn-sm btn-info'
         td = link_to 'Edit', edit_aeroplane_path(aeroplane), class:'btn btn-sm btn-warning'
         td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete, class:'btn btn-sm btn-danger'
 

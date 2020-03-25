@@ -8,7 +8,6 @@ table.table
       th Class
       th No. of Columns
       th No. of Rows
-      th Fare
 
   tbody
       tr
@@ -31,16 +30,25 @@ table.table
     tr
       th Origin
       th Destination
+      th Departure Date
       th Departure time 
       th Arrival time
+      th First class Fare
+      th Business class Fare      
+      th Economy class Fare
+
 
   tbody
     - @aeroplane.trips.each do |trip|
       tr
         td = trip.origin
         td = trip.destination
-        td = trip.departure
-        td = trip.arrival 
+        td = readable_date(trip.departure)
+        td = readable_time(trip.departure)
+        td = readable_time(trip.arrival)
+        td = trip.fcfare
+        td = trip.bcfare
+        td = trip.ecfare 
 
 br
 h4 Seat Configuration for the plane 
