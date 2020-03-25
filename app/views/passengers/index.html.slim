@@ -14,8 +14,6 @@ table.table.table-hover
 
   tbody
     - @passengers.each do |passenger|
-      - if passenger.tickets.empty?
-      - else
         tr
           td = passenger.name
           td = passenger.email
@@ -27,3 +25,7 @@ table.table.table-hover
 br
 
 = link_to 'New Passenger', new_passenger_path, class: 'btn btn-primary'
+br
+br
+= link_to 'Book a ticket', search_path, class: 'btn btn-success'
+
