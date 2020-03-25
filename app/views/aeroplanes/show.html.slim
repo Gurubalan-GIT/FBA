@@ -42,6 +42,11 @@ table.table
         td = trip.departure
         td = trip.arrival 
 
+br
+h4 Seat Configuration for the plane 
+
+== render 'seatconfig', aeroplane: @aeroplane
+br
 => link_to 'Edit', edit_aeroplane_path(@aeroplane), class:'btn btn-warning'
 ' &nbsp
 =< link_to 'Back', aeroplanes_path, class:'btn btn-danger'
