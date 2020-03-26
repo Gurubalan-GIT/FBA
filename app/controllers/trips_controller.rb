@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
   helper :application
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :alltrips, :show, :new, :create, :update, :destroy]
+  
 
   # GET /trips
   # GET /trips.json

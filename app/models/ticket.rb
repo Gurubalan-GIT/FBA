@@ -3,7 +3,7 @@ class Ticket < ApplicationRecord
     belongs_to :trip
     accepts_nested_attributes_for :passenger
     before_save :generate_pnr
-    validate :check_passenger
+    validate :check_passenger, :on => :create
 
     def generate_pnr
         selected_trip = Trip.find(trip_id) 

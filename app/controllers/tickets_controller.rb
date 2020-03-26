@@ -1,5 +1,9 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action do 
+    redirect_to new_user_session_path unless current_user
+  end
 
   # GET /tickets
   # GET /tickets.json
@@ -50,7 +54,7 @@ class TicketsController < ApplicationController
           :enable_starttls_auto => true
         }
 
-        TicketMailer.with(ticket: @ticket, passenger: @ticket.passenger).new_ticket_email.deliver_now!
+        TicketMailer.with(user:current_user, ticket: @ticket, passenger: @ticket.passenger).new_ticket_email.deliver_now!
 
       else
         format.html { render :new }
@@ -64,8 +68,18 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to passengers_path, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
+        ActionMailer::Base.smtp_settings = {
+          :address              => "smtp.gmail.com",
+          :port                 => 587,
+          :user_name            => 'gurubalan@commutatus.com',
+          :password             => 'gtgvmzkmnpkxzdgd',
+          :authentication       => "plain",
+          :enable_starttls_auto => true
+        }
+
+        TicketMailer.with(user:current_user, ticket: @ticket, passenger: @ticket.passenger).update_ticket_email.deliver_now!
       else
         format.html { render :edit }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
