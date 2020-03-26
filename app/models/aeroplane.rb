@@ -1,4 +1,5 @@
 class Aeroplane < ApplicationRecord
+    validates :plane, :fc_column, :fc_row, :bc_column, :bc_row, :ec_column, :ec_row, :model, presence: true
     has_many :trips, dependent: :destroy
     has_many :passengers
     validate :check_limts
