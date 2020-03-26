@@ -2,6 +2,10 @@ br
 br 
 h4 Update ticket!
 br 
+.alert.alert-danger role="alert" 
+  i.fas.fa-exclamation-circle style=("color: #dc3545; margin-right: 5px;") 
+  | When updating seats, fares might get changed depending on the seat classes.
+
 = form_for @ticket do |f|
   - if @ticket.errors.any?
     #error_explanation

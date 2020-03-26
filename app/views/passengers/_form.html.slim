@@ -9,19 +9,19 @@
     .col-4
     .col-4
       = f.label :name
-      = f.text_field :name, class: 'form-control'
+      = f.text_field :name, required: true, class: 'form-control'
   br
   .field
     .col-4
     .col-4
       = f.label :email
-      = f.text_field :email, class: 'form-control'
+      = f.text_field :email, required: true, class: 'form-control'
   br
   .field
     .col-4
     .col-4
       = f.label :age
-      = f.text_field :age, class: 'form-control'
+      = f.text_field :age, required: true, class: 'form-control'
   br
   .field
     = f.hidden_field :user_id, value: current_user.id
