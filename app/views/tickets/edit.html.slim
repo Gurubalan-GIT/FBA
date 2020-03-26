@@ -15,7 +15,7 @@ br
 
   .field
     .col-4
-    .col-4
+  .col-4
       = f.label :passenger_id, "Passenger"
       = f.collection_select :passenger_id, current_user.passengers, :id, :name, {:include_blank => false}, {:class => 'form-control'}
 
