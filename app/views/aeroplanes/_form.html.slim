@@ -33,25 +33,25 @@ br
   .field
     .col-4
     .col-4
-      = f.label :bc_column, "Number of Columns for First class"
+      = f.label :bc_column, "Number of Columns for Business class"
       = f.number_field :bc_column, required: true,class: 'form-control'
   br
   .field
     .col-4
     .col-4
-      = f.label :bc_row, "Number of Rows for First class"
+      = f.label :bc_row, "Number of Rows for Business class"
       = f.number_field :bc_row, required: true,class: 'form-control'
   br
   .field
     .col-4
     .col-4
-      = f.label :ec_column, "Number of Columns for First class"
+      = f.label :ec_column, "Number of Columns for Economy class"
       = f.number_field :ec_column,required: true, class: 'form-control'
   br
   .field
     .col-4
     .col-4
-      = f.label :ec_row, "Number of Rows for First class"
+      = f.label :ec_row, "Number of Rows for Economy class"
       = f.number_field :ec_row,required: true, class: 'form-control'
   br
   .actions = f.submit class: 'btn btn-primary'
