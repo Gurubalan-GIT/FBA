@@ -39,7 +39,7 @@ class TicketsController < ApplicationController
     @ticket.trip_id = params[:trip_id]
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to tickets_path, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to passengers_path, notice: 'Ticket was successfully booked.' }
         format.json { render :show, status: :created, location: @ticket }
         ActionMailer::Base.smtp_settings = {
           :address              => "smtp.gmail.com",
@@ -78,7 +78,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to passengers_path, notice: 'Ticket was successfully cancelled.' }
       format.json { head :no_content }
     end
   end

@@ -3,6 +3,7 @@ class Ticket < ApplicationRecord
     belongs_to :trip
     accepts_nested_attributes_for :passenger
     before_save :generate_pnr
+    validate :check_passenger
 
     def generate_pnr
         selected_trip = Trip.find(trip_id) 
@@ -25,6 +26,15 @@ class Ticket < ApplicationRecord
         if(split_seat_class == "Economy")
             self.pnr = "#{selected_trip.aeroplane.model}" + "EC" + "#{seat_no}" + "#{trip_id}"
             self.price = economy_fare
+        end
+    end
+
+    def check_passenger
+        passenger = Passenger.find(passenger_id)
+        selected_trip = Trip.find(trip_id) 
+        count = selected_trip.passengers.where(name: "#{passenger.name}").count
+        if(count==1)
+            errors.add(:passenger_id, "Passenger already has a booked ticket")
         end
     end
 
