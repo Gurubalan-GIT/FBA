@@ -19,9 +19,11 @@ table.table
     tr
       th Origin
       th Destination
+      th Date
       th Departure
       th Arrival
       th Plane
+      th Seats Left
       th First Class Fare
       th Business Class Fare
       th Economy Class Fare
@@ -30,12 +32,19 @@ table.table
 
   tbody
     - @searched_trips.each do |trip|
+      - aeroplane_seats = trip.aeroplane.seats
+      - occupied = trip.passengers.count
+      - left = aeroplane_seats - occupied
       tr
         td = trip.origin
         td = trip.destination
-        td = trip.departure
-        td = trip.arrival
+        td = readable_date(trip.departure)
+        td = readable_time(trip.departure)
+        td = readable_time(trip.arrival)
         td = trip.aeroplane.plane
+        td.left
+          .badge.badge-danger
+            = left
         td = trip.fcfare
         td = trip.bcfare
         td = trip.ecfare

@@ -10,17 +10,24 @@ table.table
       th Date
       th Departure
       th Arrival
+      th Seats Left
       th Plane
       th
 
   tbody
     - @trips.each do |trip|
+      - aeroplane_seats = trip.aeroplane.seats
+      - occupied = trip.passengers.count
+      - left = aeroplane_seats - occupied
       tr
         td = trip.origin
         td = trip.destination
         td = readable_date(trip.departure)
         td = readable_time(trip.departure)
         td = readable_time(trip.arrival)
+        td.left
+          .badge.badge-danger
+            = left
         td = trip.aeroplane.plane
         td = link_to 'View Aeroplane', trip, class: 'btn btn-sm btn-info'
 br
